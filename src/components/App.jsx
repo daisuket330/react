@@ -4,6 +4,7 @@ import TitleBar from "./TitleBar/TitleBar";
 import BookViewer from "./bookviewer/Bookviewer";
 import BookCreator from "./BookCreator/BookCreator";
 import Footer from "./Footer/Footer";
+import DisplayName from "./DisplayName/DisplayName"
 
 class App extends Component {
     constructor(props) {
@@ -47,6 +48,14 @@ this.books.push(newBook);
 this.setState({
     bookNumber: this.books.length - 1
 })
+
+// displayNewName = (newName) => {
+// this.books.push(newName);
+// this.setState({
+//     displayedName: this.displayNewName
+// })    
+// }
+
 }
 
     render(){
@@ -56,6 +65,7 @@ this.setState({
                 <BookViewer book={this.books[this.state.bookNumber]} nextBook={this.goToNextBook} previousBook={this.goToPreviousBook} />
                 <BookCreator createNewBook={this.createBook} />
                 <Footer />
+                <DisplayName />
             </div>  
         )
     }

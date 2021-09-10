@@ -3,8 +3,8 @@ class displayName extends Component {
     constructor(props) {
         super(props);
         this.state = {  
-            firstName: 'Reggie',
-            lastName: 'White'
+            firstName: '',
+            lastName: ''
         }
     }
 
@@ -17,7 +17,7 @@ class displayName extends Component {
     }
 handleSubmit = (event) => {
     event.preventDefault();
-    this.props.displayNewName(this.state)
+    alert(`First Name: ${this.state.firstName} Last Name: ${this.state.lastName}`)
     
     
 

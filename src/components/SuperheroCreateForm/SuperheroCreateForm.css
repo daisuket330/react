@@ -1,0 +1,17 @@
+form{
+    margin: 10 px;
+    padding: 10px;
+}
+
+label{
+    float:left;
+    clear: left;
+    width: 250px;
+    margin-right: 10 px;
+}
+
+input{
+    
+    margin-left: 10 px;
+    
+}

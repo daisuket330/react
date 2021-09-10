@@ -1,74 +1,81 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import './App.css'
-import TitleBar from "./TitleBar/TitleBar";
-import BookViewer from "./bookviewer/Bookviewer";
-import BookCreator from "./BookCreator/BookCreator";
-import Footer from "./Footer/Footer";
-import DisplayName from "./DisplayName/DisplayName"
+import DisplayName from './DisplayName/DisplayName';
+import NamesList from "./NamesList/NamesList";
+
+import SuperheroTable from "./SuperheroTable/SuperheroTable";
+import SuperheroCreateForm from "./SuperheroCreateForm/SuperheroCreateForm";
+import Jokes from "./Jokes/Jokes";
+
+
 
 class App extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.books =[
-            {title: "Scott Pilgram", author: "Brian O'malley"},
-            {title: "A Land Remembered", author: "Patrick D. Smith"},
-            {title: "FullMetal Alchemist", author: "Hiromu Arakawa"}
-        ];
         this.state = {
-            bookNumber: 0
+            firstName: 'Reggie',
+            lastName: 'White',
+            names: [' Mike', 'Nevin', 'Aaron', 'Tory', 'Kelly'],
+            superheroes : [
+                {
+                    superheroId: 1,
+                    name: 'Batman',
+                    primaryAbility: 'Wealthy',
+                    secondarAbility: 'Rich'
+                },
+                {
+                    superheroId: 2,
+                    name: 'Superman',
+                    primaryAbility: 'Super strength',
+                    secondarAbility: 'Fly'
+                },
+                {
+                    superheroId: 3,
+                    name: 'Spiderman',
+                    primaryAbility: 'Spider senses',
+                    secondarAbility: 'Shoots web'
+                }
+            ]
+            
         };
     }
 
-goToNextBook = () => {
-    let tempBookNumber = this.state.bookNumber;
-    tempBookNumber++
-    if(tempBookNumber== this.books.length){
-        tempBookNumber = 0;
+
+    //Alert user
+    alertUser = () =>{
+        alert("devCodeCamp");
     }
-    this.setState({
-        bookNumber: tempBookNumber
-    })
+
+    createSuperhero = (newHero) =>{
+        debugger;
+        let tempSuperheroes = this.state.superheroes;
+        tempSuperheroes.push(newHero);
+        this.setState({
+            superheroes: tempSuperheroes
+        });
+    }
+
+
 
     
-}
 
-goToPreviousBook = () => {
-    let tempBookNumber = this.state.bookNumber;
-    tempBookNumber--;
-    if (tempBookNumber < 0){
-        tempBookNumber = this.books.length - 1;
-    }
-    this.setState({
-        bookNumber: tempBookNumber
-    });
 
-}
-createBook = (newBook) => {
-this.books.push(newBook);
-this.setState({
-    bookNumber: this.books.length - 1
-})
-
-// displayNewName = (newName) => {
-// this.books.push(newName);
-// this.setState({
-//     displayedName: this.displayNewName
-// })    
-// }
-
-}
 
     render(){
-        return (
+        return(
             <div className="container-fluid">
-                <TitleBar />
-                <BookViewer book={this.books[this.state.bookNumber]} nextBook={this.goToNextBook} previousBook={this.goToPreviousBook} />
-                <BookCreator createNewBook={this.createBook} />
-                <Footer />
-                <DisplayName />
-            </div>  
+            <h1>React Worksheet</h1>
+            <DisplayName />
+            <NamesList names = {this.state.names} />
+            <button onClick ={this.alertUser}>test</button>
+            {/* <AlertUser userAlert = {this.alertUser}/> */}
+            <SuperheroTable superheroes = {this.state.superheroes} />
+            <SuperheroCreateForm createSuperhero={this.createSuperhero}/>
+            <Jokes />
+            </div>
+
         )
-    }
+    }    
 }
 
 export default App;
